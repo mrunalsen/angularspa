@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'angularspa';
+  iconName: string = 'artist';
+  iconNames: string[] = ['artist', 'sleep'];
+  currentIconIndex: number = 0;
+
+  toggleIconName() {
+    this.currentIconIndex = (this.currentIconIndex + 1) % this.iconNames.length;
+    this.iconName = this.iconNames[this.currentIconIndex];
+  }
 }
